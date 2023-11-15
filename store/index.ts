@@ -1,7 +1,11 @@
-import { defineStore } from 'pinia'
+// store/filters.ts
+import { defineStore } from "pinia";
 
-export const useMainStore = defineStore('main', {
-    fooddata: [
+export const useFoodAppStore = defineStore({
+  id: "foodApp-store",
+  state: () => {
+    return {
+      fooddata: [
         {
           name: "Taco bout Eating Tacos",
           deliveryTime: 25,
@@ -15,8 +19,20 @@ export const useMainStore = defineStore('main', {
               img: "taco-taco.jpg",
               price: 3.45,
               id: "e85dbacc-f721-44e6-af8c-eda2835e2e50",
-              options: ["Al Pastor", "Carnitas", "Lengua", "Carne Asada", "Pollo"],
-              addOns: ["none", "sour cream", "avocado", "pico de gallo", "queso"],
+              options: [
+                "Al Pastor",
+                "Carnitas",
+                "Lengua",
+                "Carne Asada",
+                "Pollo",
+              ],
+              addOns: [
+                "none",
+                "sour cream",
+                "avocado",
+                "pico de gallo",
+                "queso",
+              ],
               description:
                 "Soft tortilla, your choice of meat, onions, cilantro & salsa",
             },
@@ -27,15 +43,28 @@ export const useMainStore = defineStore('main', {
               id: "e956a779-941f-41ef-874e-d5f6a6c6e0cb",
               options: ["Plain", "Carne Asada", "Pollo"],
               addOns: ["none", "sour cream", "guacamole", "pico de gallo"],
-              description: "Flour tortilla, melted cheese & optional meat choice",
+              description:
+                "Flour tortilla, melted cheese & optional meat choice",
             },
             {
               item: "Burrito",
               img: "taco-burrito.jpg",
               price: 6.59,
               id: "ecd7c207-acd7-4b58-8685-894ba622949e",
-              options: ["Al Pastor", "Carnitas", "Lengua", "Carne Asada", "Pollo"],
-              addOns: ["none", "sour cream", "avocado", "pico de gallo", "queso"],
+              options: [
+                "Al Pastor",
+                "Carnitas",
+                "Lengua",
+                "Carne Asada",
+                "Pollo",
+              ],
+              addOns: [
+                "none",
+                "sour cream",
+                "avocado",
+                "pico de gallo",
+                "queso",
+              ],
               description: "Any meat, rice, beans, onions, cilantro & salsa",
             },
           ],
@@ -98,7 +127,8 @@ export const useMainStore = defineStore('main', {
                 "Extra Cheese",
               ],
               id: "b27f4d8e-7235-42f9-b0a7-98e76a1afaf0",
-              description: "Tomatoes, Olives, Garlic, Onions, Mushrooms & Bells.",
+              description:
+                "Tomatoes, Olives, Garlic, Onions, Mushrooms & Bells.",
             },
           ],
         },
@@ -147,9 +177,20 @@ export const useMainStore = defineStore('main', {
                 "Sweet Tofu",
               ],
               id: "cadd2903-b9cb-4053-9720-c096cc95e8a5",
-              description: "Chinese eggplant filled with ground shrimp in sauce",
+              description:
+                "Chinese eggplant filled with ground shrimp in sauce",
             },
           ],
         },
       ],
-})
+    };
+  },
+//   actions: {
+//     addValueToFilterList(value: string) {
+//       this.filtersList.push(value);
+//     },
+//   },
+//   getters: {
+//     filtersList: (state) => state.filtersList,
+//   },
+});

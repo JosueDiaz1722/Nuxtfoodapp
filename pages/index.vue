@@ -1,12 +1,21 @@
 <template>
+  
   <main class="container">
+    <AppHeader />
     <h1>HI HOMEPAGE</h1>
   </main>
 </template>
 
 <script>
+import AppMenu from "@/components/AppMenu.vue";
+import AppHeader from "~/components/AppHeader.vue";
+
 export default {
   name: "IndexPage",
+  components: {
+    AppMenu,
+    AppHeader,
+  },
 };
 </script>
 
