@@ -2,12 +2,10 @@
 export default defineNuxtConfig({
   modules: ['@pinia/nuxt'],
   css: ['~/assets/main.scss'],
-  vite: {
-    vue: {
-      customElement: true,
-    },
-    vueJsx: {
-      mergeProps: true,
-    },
+  pinia: {
+    storesDirs: ['./store/**'],
   },
+  plugins: [
+    '~/plugins/getfood.server.js'
+  ]
 });

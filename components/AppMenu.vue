@@ -2,7 +2,7 @@
   <nav>
     <ul>
       <li><NuxtLink exact to="/">Home</NuxtLink></li>
-      <li><NuxtLink exact to="/about">About</NuxtLink></li>
+      <li><NuxtLink exact to="/restaurant">Restaurants</NuxtLink></li>
     </ul>
   </nav>
 </template>
