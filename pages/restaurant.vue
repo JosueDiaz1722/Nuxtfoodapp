@@ -1,14 +1,16 @@
 <template>
-    <div class="container restaurant">
+  <div class="container restaurant">
+    <div class="restaurantheading">
       <h1>Restaurants</h1>
-      <AppRestaurantInfo />
+      <AppSelect @selected="selectedRestaurant = $event"/>
+      <pre>{{ selectedRestaurant}}</pre>
     </div>
-  </template>
-  
-  <script setup>
-  import AppRestaurantInfo from "~/components/AppRestaurantInfo.vue";
+    <AppRestaurantInfo />
+  </div>
+</template>
 
-  </script>
-  
-  <style lang="scss" scoped></style>
-  
+<script setup>
+const selectedRestaurant = ref('')
+</script>
+
+<style lang="scss" scoped></style>
