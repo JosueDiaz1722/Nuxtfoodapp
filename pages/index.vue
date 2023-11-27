@@ -3,24 +3,14 @@
   <main class="container">
     <AppHeader />
     <h1>HI HOMEPAGE</h1>
-    <AppRestaurantInfo />
+    <AppRestaurantInfo :dataSource="fooddata" />
   </main>
 </template>
 
-<script>
-import AppMenu from "@/components/AppMenu.vue";
-import AppHeader from "~/components/AppHeader.vue";
-import AppRestaurantInfo from "~/components/AppRestaurantInfo.vue";
-
-
-export default {
-  name: "IndexPage",
-  components: {
-    AppMenu,
-    AppHeader,
-    AppRestaurantInfo
-  },
-};
+<script setup>
+import { useFoodAppStore } from "~/store/index.js";
+const dataStore = useFoodAppStore();
+const fooddata = dataStore.fooddata;
 </script>
 
 <style>
