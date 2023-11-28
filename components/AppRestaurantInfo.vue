@@ -19,7 +19,9 @@
               <h4>{{ menuitem.item }}</h4>
               <p>{{ priceFormating(menuitem.price) }}</p>
             </div>
-            <button class="ghost">View Item</button>
+            <NuxtLink exact :to='`/items/${menuitem.id}`'>
+              <button class="ghost">View Item</button>
+            </NuxtLink>
           </div>
         </div>
       </div>

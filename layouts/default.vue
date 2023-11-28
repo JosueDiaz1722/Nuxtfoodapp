@@ -2,8 +2,8 @@
   <div class="content">
     <AppMenu />
     <slot />
-    <AppFooter />
   </div>
+  <AppFooter />
 </template>
 
 <script>
