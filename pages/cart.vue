@@ -1,8 +1,8 @@
 <template>
   <main class="container cart">
-    <h2>Cart</h2>
-
-    <table>
+    <h2>Your Cart</h2>
+    <section v-if="dataStore.cart.length != 0">
+        <table>
       <thead>
         <th>Item</th>
         <th>Add Ons</th>
@@ -29,6 +29,8 @@
         </tr>
       </tbody>
     </table>
+    </section>
+    <AppEmptyCart v-else />
   </main>
 </template>
 

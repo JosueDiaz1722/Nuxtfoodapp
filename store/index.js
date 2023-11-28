@@ -38,5 +38,8 @@ export const useFoodAppStore = defineStore({
     totalPrice: (state) => {
       return state.cart.reduce((ac, next) => ac + +next.combinedPrice, 0);
     },
+    cartCount: (state) => {
+      return state.cart.reduce((ac, next)=> ac + +next.count,0);
+    }
   },
 });
