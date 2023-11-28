@@ -70,7 +70,7 @@ const dataStore = useFoodAppStore();
 const fooddata = dataStore.fooddata;
 const count = ref(1);
 const itemOptions = "";
-const itemAddons = [];
+const itemAddons = ref([]);
 const itemSizeAndCost = [];
 const cartSubmitted = ref(false);
 

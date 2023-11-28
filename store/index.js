@@ -1,5 +1,5 @@
-// store/filters.ts
 import { defineStore } from "pinia";
+import { v4 as uuidv4 } from 'uuid';
 
 export const useFoodAppStore = defineStore({
   id: "foodApp-store",
@@ -18,20 +18,21 @@ export const useFoodAppStore = defineStore({
           {
             headers: {
               "X-API-KEY": process.env.AWS_API_KEY ?? "",
-              "Content-Type": "application/json"
+              "Content-Type": "application/json",
             },
           }
-        ).then( (res) => {
-          this.fooddata = res.data.value
+        ).then((res) => {
+          this.fooddata = res.data.value;
         });
       } catch (error) {
-        console.log("ERROR")
+        console.log("ERROR");
         console.log(error);
       }
     },
-    async addToCart(formOutput){
-      this.cart.push(formOutput)
-    }
+    async addToCart(formOutput) {
+      formOutput.id = uuidv4();
+      this.cart.push(formOutput);
+    },
   },
   //   getters: {
   //     filtersList: (state) => state.filtersList,
