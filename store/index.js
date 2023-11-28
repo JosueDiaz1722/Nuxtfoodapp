@@ -6,6 +6,7 @@ export const useFoodAppStore = defineStore({
   state: () => {
     return {
       fooddata: [],
+      cart: [],
     };
   },
   actions: {
@@ -28,6 +29,9 @@ export const useFoodAppStore = defineStore({
         console.log(error);
       }
     },
+    async addToCart(formOutput){
+      this.cart.push(formOutput)
+    }
   },
   //   getters: {
   //     filtersList: (state) => state.filtersList,

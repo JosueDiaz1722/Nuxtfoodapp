@@ -93,14 +93,16 @@ const combinedPrice = computed(() => {
 });
 
 const addToCart = () => {
+  console.log(itemAddons)
   let formOutput = {
-    item: currentItem.item,
+    item: currentItem.value.item,
     count: count,
     options: itemOptions,
     addOns: itemAddons,
     combinedPrice: combinedPrice,
   };
   cartSubmitted.value = true;
+  dataStore.addToCart(formOutput);
 };
 </script>
 
