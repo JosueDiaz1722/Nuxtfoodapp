@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 export const useFoodAppStore = defineStore({
   id: "foodApp-store",
@@ -29,12 +29,14 @@ export const useFoodAppStore = defineStore({
         console.log(error);
       }
     },
-    async addToCart(formOutput) {
+    addToCart(formOutput) {
       formOutput.id = uuidv4();
       this.cart.push(formOutput);
     },
   },
-  //   getters: {
-  //     filtersList: (state) => state.filtersList,
-  //   },
+  getters: {
+    totalPrice: (state) => {
+      return state.cart.reduce((ac, next) => ac + +next.combinedPrice, 0);
+    },
+  },
 });

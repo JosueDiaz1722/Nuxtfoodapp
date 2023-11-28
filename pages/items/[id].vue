@@ -93,7 +93,6 @@ const combinedPrice = computed(() => {
 });
 
 const addToCart = () => {
-  console.log(itemAddons)
   let formOutput = {
     item: currentItem.value.item,
     count: count,
