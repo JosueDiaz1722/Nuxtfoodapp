@@ -27,7 +27,7 @@
             name="option"
             :id="option"
             :value="option"
-            v-model="itemOptions"
+            v-model= "$v.itemOptions.required"
           />
           <label :for="option">{{ option }}</label>
         </div>
@@ -43,7 +43,7 @@
             name="addon"
             :id="addon"
             :value="addon"
-            v-model="itemAddons"
+            v-model="$v.itemAddons.required"
           />
           <label :for="addon">{{ addon }}</label>
         </div>
@@ -52,6 +52,10 @@
       <AppToast v-if="cartSubmitted"
         >Order submitted <br />
         Check out more <NuxtLink to="/restaurant">restaurants</NuxtLink>
+      </AppToast>
+      <AppToast v-if="errors"
+        >Plese select options and <br />
+        addons before continuing
       </AppToast>
     </section>
 
@@ -64,15 +68,31 @@
 
 <script setup>
 import { useFoodAppStore } from "~/store/index.js";
+import useValidate from '@vuelidate/core'
+import { required } from '@vuelidate/validators'
 const route = useRoute();
 const id = route.params.id;
 const dataStore = useFoodAppStore();
 const fooddata = dataStore.fooddata;
 const count = ref(1);
-const itemOptions = "";
+const itemOptions = ref("");
 const itemAddons = ref([]);
 const itemSizeAndCost = [];
 const cartSubmitted = ref(false);
+const errors = ref(false);
+
+const rules =computed(() => (
+  {
+    itemAddons: {
+      required,
+    },
+    itemOptions: {
+      required
+    }
+  }
+));
+
+const $v = ref(useValidate(rules,{itemAddons, itemOptions}))
 
 const currentItem = computed(() => {
   let result;
@@ -100,8 +120,16 @@ const addToCart = () => {
     addOns: itemAddons,
     combinedPrice: combinedPrice,
   };
-  cartSubmitted.value = true;
-  dataStore.addToCart(formOutput);
+  let addOnError = $v.value.itemAddons.$invalid;
+  let optionError = currentItem.value.options ? $v.value.itemOptions.$invalid : false;
+
+  if(addOnError || optionError ){
+    errors.value = true;
+  }else{
+    errors.value = false;
+    cartSubmitted.value = true;
+    dataStore.addToCart(formOutput)
+  }
 };
 </script>
 
